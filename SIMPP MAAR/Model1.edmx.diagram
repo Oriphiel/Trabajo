@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e1b0619a024403f902636e11be26c62" Name="Diagram1" ZoomLevel="93" ShowGrid="true" DisplayType="true">
+        <EntityTypeShape EntityType="simpp_maarModel.ciudad" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.cuota" Width="2.875" PointX="10.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.curso" Width="1.5" PointX="18.375" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.estudiante" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.fact_cab" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.fact_det" Width="1.5" PointX="12" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.matricula" Width="1.875" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.nacionalidad" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.paralelo" Width="1.5" PointX="14.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.perfil" Width="1.5" PointX="14" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.perfil_usuario" Width="2.25" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.periodo" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.persona" Width="1.75" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.representante" Width="2" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.rubro" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="simpp_maarModel.usuario" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="simpp_maarModel.fk_Persona_Ciudad1" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.fk_Pagos_Matricula1" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.pagos_rubros" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.fk_Estudiante_Persona1" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.matricula_estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.dete_cab" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.factura_matricula" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.Periodo_matricula" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.fk_Persona_Nacionalidad1" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.perfil_usuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.usuario_perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.fk_Representantes_Persona1" ManuallyRouted="false" />
+        <AssociationConnector Association="simpp_maarModel.fk_Usuario_Persona1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="simpp_maarModel.establecimiento" Width="2.25" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.estudiantepersona" Width="2.875" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="simpp_maarModel.matricula_representante" />
+        <EntityTypeShape EntityType="simpp_maarModel.representante_estudiante1" Width="1.5" PointX="14.375" PointY="8.125" />
+        <AssociationConnector Association="simpp_maarModel.estudiante1" />
+        <AssociationConnector Association="simpp_maarModel.representante1" />
+        <EntityTypeShape EntityType="simpp_maarModel.representante_persona" Width="2.875" PointX="11.375" PointY="0.875" />
+        <EntityTypeShape EntityType="simpp_maarModel.representantecompleto" Width="2.75" PointX="14.375" PointY="3.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.matricula_completa" Width="3.625" PointX="3.25" PointY="12.625" />
+        <EntityTypeShape EntityType="simpp_maarModel.curso_paralelo" Width="1.5" PointX="14.5" PointY="15.5" />
+        <AssociationConnector Association="simpp_maarModel.Curso_matricula1" />
+        <AssociationConnector Association="simpp_maarModel.relacion_curso" />
+        <AssociationConnector Association="simpp_maarModel.relacion_paralelo" />
+        <EntityTypeShape EntityType="simpp_maarModel.curso_completo" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.usuario_completo" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.staff" Width="2.25" PointX="16.375" PointY="6.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.perfile" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.rubros_det" Width="2" PointX="4.25" PointY="0.875" />
+        <EntityTypeShape EntityType="simpp_maarModel.rubros_completo" Width="3" PointX="18.5" PointY="3.375" />
+        <AssociationConnector Association="simpp_maarModel.rubro_de" />
+        <EntityTypeShape EntityType="simpp_maarModel.cuotas_completa" Width="3" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.estudiante_madre" Width="2.75" PointX="6.75" PointY="19.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.estudiante_padre" Width="2.75" PointX="9.625" PointY="19.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.matricula_alumno" Width="2.75" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.matricula_representante1" Width="2.75" PointX="3.75" PointY="19.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.zcabecera" Width="2.625" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.factura_detalles" Width="1.875" PointX="11" PointY="16.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.zcuotas_matricula" Width="3" PointX="19.75" PointY="6.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.zcuotas_meses" Width="3" PointX="23.375" PointY="6.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.curso_completo_nombres_unidos" Width="2.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.zpagosmensuale" Width="3.25" PointX="21.375" PointY="11.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.zanual_pagos_matricula" Width="3.375" PointX="21.375" PointY="16.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.zanual_pagos_meses" Width="3.375" PointX="21.375" PointY="21.75" />
+        <EntityTypeShape EntityType="simpp_maarModel.matriculas_inactivas" Width="1.5" PointX="16.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

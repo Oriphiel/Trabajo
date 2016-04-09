@@ -1,0 +1,2864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="simpp_maarModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cuotas">
+          <Key>
+            <PropertyRef Name="idCuotas" />
+          </Key>
+          <Property Name="idCuotas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMatricula" Type="int" Nullable="false" />
+          <Property Name="idRubro" Type="int" Nullable="false" />
+          <Property Name="creado" Type="datetime" Precision="0" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Fecha_pago_realizado" Type="datetime" Precision="0" />
+          <Property Name="Pagar" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Descuento" Type="int" />
+          <Property Name="DetalleDescuento" Type="varchar" MaxLength="100" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="curso_paralelo">
+          <Key>
+            <PropertyRef Name="idcurso_paralelo" />
+          </Key>
+          <Property Name="idcurso_paralelo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCurso" Type="int" />
+          <Property Name="idParalelo" Type="int" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="capacidad" Type="int" />
+        </EntityType>
+        <EntityType Name="cursos">
+          <Key>
+            <PropertyRef Name="idCursos" />
+          </Key>
+          <Property Name="idCursos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="establecimiento">
+          <Key>
+            <PropertyRef Name="idEstablecimiento" />
+          </Key>
+          <Property Name="idEstablecimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Rector" Type="varchar" MaxLength="80" />
+          <Property Name="Seccion" Type="varchar" MaxLength="45" />
+          <Property Name="Tipo" Type="varchar" MaxLength="45" />
+          <Property Name="Resoloucion" Type="varchar" MaxLength="45" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Correo" Type="varchar" MaxLength="45" />
+          <Property Name="Direccion" Type="varchar" MaxLength="45" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" />
+          <Property Name="Web" Type="varchar" MaxLength="100" />
+          <Property Name="Mision" Type="varchar" MaxLength="200" />
+          <Property Name="Vision" Type="varchar" MaxLength="200" />
+          <Property Name="HImno" Type="varchar" MaxLength="200" />
+          <Property Name="Escudo" Type="longblob" />
+        </EntityType>
+        <EntityType Name="estudiante">
+          <Key>
+            <PropertyRef Name="idEstudiante" />
+          </Key>
+          <Property Name="idEstudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idpersona" Type="int" />
+          <Property Name="observaciones" Type="varchar" MaxLength="200" />
+          <Property Name="lugar_nacimiento" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fact_cab">
+          <Key>
+            <PropertyRef Name="idfact_cab" />
+          </Key>
+          <Property Name="idfact_cab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idmatricula" Type="int" />
+          <Property Name="fecha" Type="datetime" Precision="0" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fpago" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="fact_det">
+          <Key>
+            <PropertyRef Name="idfact_det" />
+          </Key>
+          <Property Name="idfact_det" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idfact_cab" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idRubros" Type="int" />
+        </EntityType>
+        <EntityType Name="matricula">
+          <Key>
+            <PropertyRef Name="idMatricula" />
+          </Key>
+          <Property Name="idMatricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEstudiante" Type="int" Nullable="false" />
+          <Property Name="idRepresentante" Type="int" Nullable="false" />
+          <Property Name="idPeriodo" Type="int" Nullable="false" />
+          <Property Name="idCurso_paralelo" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nacionalidad">
+          <Key>
+            <PropertyRef Name="idNacionalidad" />
+          </Key>
+          <Property Name="idNacionalidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paralelos">
+          <Key>
+            <PropertyRef Name="idParalelos" />
+          </Key>
+          <Property Name="idParalelos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="perfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="perfil_usuario">
+          <Key>
+            <PropertyRef Name="idPerfil_usuario" />
+          </Key>
+          <Property Name="idPerfil_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPerfil" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="periodo">
+          <Key>
+            <PropertyRef Name="idPeriodo" />
+          </Key>
+          <Property Name="idPeriodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="45" />
+          <Property Name="IDCiudad" Type="int" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="45" />
+          <Property Name="Genero" Type="varchar" MaxLength="45" />
+          <Property Name="Fecha_nacimiento" Type="date" />
+          <Property Name="Estado_civil" Type="varchar" MaxLength="45" />
+          <Property Name="idNacionalidad" Type="int" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="representante_estudiante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRepresentante" Type="int" />
+          <Property Name="idEstudiante" Type="int" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="representantes">
+          <Key>
+            <PropertyRef Name="idRepresentantes" />
+          </Key>
+          <Property Name="idRepresentantes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idpersona" Type="int" />
+          <Property Name="trabaja" Type="varchar" MaxLength="45" />
+          <Property Name="direcciont" Type="varchar" MaxLength="45" />
+          <Property Name="telefonot" Type="varchar" MaxLength="45" />
+          <Property Name="correot" Type="varchar" MaxLength="45" />
+          <Property Name="viveEstudiante" Type="varchar" MaxLength="45" />
+          <Property Name="relacion" Type="varchar" MaxLength="45" />
+          <Property Name="nivelEdu" Type="varchar" MaxLength="45" />
+          <Property Name="titulo" Type="varchar" MaxLength="45" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="empresa" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="rubros">
+          <Key>
+            <PropertyRef Name="idRubros" />
+          </Key>
+          <Property Name="idRubros" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="int" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fecha_registro" Type="datetime" Precision="0" StoreGeneratedPattern="Computed" />
+          <Property Name="Fecha_de_pago" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rubros_det">
+          <Key>
+            <PropertyRef Name="idrubros_det" />
+          </Key>
+          <Property Name="idrubros_det" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="Desde" Type="datetime" Precision="0" StoreGeneratedPattern="Computed" />
+          <Property Name="Hasta" Type="datetime" Precision="0" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.cuotas_completa' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="cuotas_completa">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="idmatricula" />
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="idmatricula" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="100" />
+          <Property Name="Fecha de pago" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fecha de Pago Realizado" Type="datetime" Precision="0" />
+          <Property Name="Descuento" Type="int" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.curso_completo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="curso_completo">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Curso" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Paralelo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Capacidad" Type="int" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.curso_completo_nombres_unidos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="curso_completo_nombres_unidos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Curso" Type="varchar" MaxLength="146" />
+          <Property Name="Capacidad" Type="int" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.estudiante_madre' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="estudiante_madre">
+          <Key>
+            
+            
+            <PropertyRef Name="IDEstudiante" />
+          </Key>
+          <Property Name="IDEstudiante" Type="int" Nullable="false" />
+          <Property Name="idRepresentante" Type="int" />
+          <Property Name="Representante" Type="varchar" MaxLength="91" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="45" />
+          <Property Name="CorreoTrabajo" Type="varchar" MaxLength="45" />
+          <Property Name="TelefonoTrabajo" Type="varchar" MaxLength="45" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NiveldeEducacion" Type="varchar" MaxLength="45" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="45" />
+          <Property Name="viveEstudiante" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.estudiante_padre' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="estudiante_padre">
+          <Key>
+            
+            
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Representante" Type="varchar" MaxLength="91" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="45" />
+          <Property Name="CorreoTrabajo" Type="varchar" MaxLength="45" />
+          <Property Name="TelefonoTrabajo" Type="varchar" MaxLength="45" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NiveldeEducacion" Type="varchar" MaxLength="45" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="45" />
+          <Property Name="viveEstudiante" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.estudiantepersona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="estudiantepersona">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.factura_detalles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="factura_detalles">
+          <Key>
+            <PropertyRef Name="idfact_cab" />
+            
+            
+          </Key>
+          <Property Name="idmatricula" Type="int" />
+          <Property Name="idfact_cab" Type="int" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cantidad" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="detalle" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idrubros" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.matricula_alumno' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="matricula_alumno">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="lugar_nacimiento" Type="varchar" MaxLength="45" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="estado_civil" Type="varchar" MaxLength="45" />
+          <Property Name="correo" Type="varchar" MaxLength="45" />
+          <Property Name="Periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Paralelo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.matricula_completa' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="matricula_completa">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="Representante" Type="varchar" MaxLength="91" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Paralelo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.matricula_representante' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="matricula_representante">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="cedulaestudiante" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Representante" Type="varchar" MaxLength="91" />
+          <Property Name="Curso2" Type="varchar" MaxLength="146" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="45" />
+          <Property Name="CorreoTrabajo" Type="varchar" MaxLength="45" />
+          <Property Name="TelefonoTrabajo" Type="varchar" MaxLength="45" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NiveldeEducacion" Type="varchar" MaxLength="45" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="45" />
+          <Property Name="viveEstudiante" Type="varchar" MaxLength="45" />
+          <Property Name="relacion" Type="varchar" MaxLength="45" />
+          <Property Name="Periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Paralelo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="correoestudiante" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.matriculas_inactivas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="matriculas_inactivas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Paralelo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.perfiles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="perfiles">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+            
+            
+            
+          </Key>
+          <Property Name="idPerfil" Type="int" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.representante_persona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="representante_persona">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="91" />
+          <Property Name="IDestudiante" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.representantecompleto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="representantecompleto">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="91" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.rubros_completo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="rubros_completo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Costo" />
+            <PropertyRef Name="Fecha de pago" />
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Costo" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fecha de pago" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.staff' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="91" />
+          <Property Name="estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.usuario_completo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="usuario_completo">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="91" />
+          <Property Name="Usuario" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.zanual_pagos_matricula' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="zanual_pagos_matricula">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="idmatricula" Type="int" Nullable="false" />
+          <Property Name="idcuotas" Type="int" Nullable="false" />
+          <Property Name="detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Suma" Type="bigint" Nullable="false" />
+          <Property Name="Pagar" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="descuento" Type="int" />
+          <Property Name="estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="representante" Type="varchar" MaxLength="91" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="146" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.zanual_pagos_meses' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="zanual_pagos_meses">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="idmatricula" Type="int" Nullable="false" />
+          <Property Name="idcuotas" Type="int" Nullable="false" />
+          <Property Name="detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Suma" Type="bigint" Nullable="false" />
+          <Property Name="Pagar" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="descuento" Type="int" />
+          <Property Name="estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="representante" Type="varchar" MaxLength="91" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="146" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.zcabecera' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="zcabecera">
+          <Key>
+            
+            
+            
+            
+            
+            <PropertyRef Name="idfact_cab" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="representante" Type="varchar" MaxLength="91" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="45" />
+          <Property Name="curso" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="paralelo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+          <Property Name="idfact_cab" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Precision="0" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.zcuotas_matricula' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="zcuotas_matricula">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="idmatricula" Type="int" Nullable="false" />
+          <Property Name="idcuotas" Type="int" Nullable="false" />
+          <Property Name="count(rd.idrubros_det)" Type="bigint" Nullable="false" />
+          <Property Name="sum(c.pagar)" Type="decimal" Precision="34" Scale="2" />
+          <Property Name="descuento" Type="int" />
+          <Property Name="estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="representante" Type="varchar" MaxLength="91" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="146" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.zcuotas_meses' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="zcuotas_meses">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="idmatricula" Type="int" Nullable="false" />
+          <Property Name="idcuotas" Type="int" Nullable="false" />
+          <Property Name="count(rd.idrubros_det)" Type="bigint" Nullable="false" />
+          <Property Name="sum(c.pagar)" Type="decimal" Precision="34" Scale="2" />
+          <Property Name="descuento" Type="text" />
+          <Property Name="estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="representante" Type="varchar" MaxLength="91" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="146" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.simpp_maar.zpagosmensuales' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="zpagosmensuales">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+            <PropertyRef Name="idcuotas" />
+            <PropertyRef Name="Pagar" />
+            <PropertyRef Name="cedula" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="idmatricula" Type="int" Nullable="false" />
+          <Property Name="idcuotas" Type="int" Nullable="false" />
+          <Property Name="detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Pagar" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="descuento" Type="int" />
+          <Property Name="estudiante" Type="varchar" MaxLength="91" />
+          <Property Name="representante" Type="varchar" MaxLength="91" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="45" />
+          <Property Name="Curso" Type="varchar" MaxLength="146" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="Curso_matricula">
+          <End Role="curso_paralelo" Type="Self.curso_paralelo" Multiplicity="1" />
+          <End Role="matricula" Type="Self.matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso_paralelo">
+              <PropertyRef Name="idcurso_paralelo" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idCurso_paralelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="det_cab">
+          <End Role="fact_cab" Type="Self.fact_cab" Multiplicity="1" />
+          <End Role="fact_det" Type="Self.fact_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fact_cab">
+              <PropertyRef Name="idfact_cab" />
+            </Principal>
+            <Dependent Role="fact_det">
+              <PropertyRef Name="idfact_cab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="estudiante1">
+          <End Role="estudiante" Type="Self.estudiante" Multiplicity="0..1" />
+          <End Role="representante_estudiante" Type="Self.representante_estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estudiante">
+              <PropertyRef Name="idEstudiante" />
+            </Principal>
+            <Dependent Role="representante_estudiante">
+              <PropertyRef Name="idEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="factura_matricula">
+          <End Role="matricula" Type="Self.matricula" Multiplicity="0..1" />
+          <End Role="fact_cab" Type="Self.fact_cab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="matricula">
+              <PropertyRef Name="idMatricula" />
+            </Principal>
+            <Dependent Role="fact_cab">
+              <PropertyRef Name="idmatricula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estudiante_Persona1">
+          <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+          <End Role="estudiante" Type="Self.estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="estudiante">
+              <PropertyRef Name="idpersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pagos_Matricula1">
+          <End Role="matricula" Type="Self.matricula" Multiplicity="1" />
+          <End Role="cuotas" Type="Self.cuotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="matricula">
+              <PropertyRef Name="idMatricula" />
+            </Principal>
+            <Dependent Role="cuotas">
+              <PropertyRef Name="idMatricula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_Ciudad1">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="IDCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_Nacionalidad1">
+          <End Role="nacionalidad" Type="Self.nacionalidad" Multiplicity="0..1" />
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nacionalidad">
+              <PropertyRef Name="idNacionalidad" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="idNacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Representantes_Persona1">
+          <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+          <End Role="representantes" Type="Self.representantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="representantes">
+              <PropertyRef Name="idpersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_Persona1">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="matricula_estudiante">
+          <End Role="estudiante" Type="Self.estudiante" Multiplicity="1" />
+          <End Role="matricula" Type="Self.matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estudiante">
+              <PropertyRef Name="idEstudiante" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="matricula_representante1">
+          <End Role="representantes" Type="Self.representantes" Multiplicity="1" />
+          <End Role="matricula" Type="Self.matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="representantes">
+              <PropertyRef Name="idRepresentantes" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idRepresentante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pagos_rubros">
+          <End Role="rubros" Type="Self.rubros" Multiplicity="1" />
+          <End Role="cuotas" Type="Self.cuotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rubros">
+              <PropertyRef Name="idRubros" />
+            </Principal>
+            <Dependent Role="cuotas">
+              <PropertyRef Name="idRubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="perfil_usuario1">
+          <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
+          <End Role="perfil_usuario" Type="Self.perfil_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="perfil_usuario">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Periodo_matricula">
+          <End Role="periodo" Type="Self.periodo" Multiplicity="1" />
+          <End Role="matricula" Type="Self.matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodo">
+              <PropertyRef Name="idPeriodo" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_curso">
+          <End Role="cursos" Type="Self.cursos" Multiplicity="0..1" />
+          <End Role="curso_paralelo" Type="Self.curso_paralelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cursos">
+              <PropertyRef Name="idCursos" />
+            </Principal>
+            <Dependent Role="curso_paralelo">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_paralelo">
+          <End Role="paralelos" Type="Self.paralelos" Multiplicity="0..1" />
+          <End Role="curso_paralelo" Type="Self.curso_paralelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paralelos">
+              <PropertyRef Name="idParalelos" />
+            </Principal>
+            <Dependent Role="curso_paralelo">
+              <PropertyRef Name="idParalelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="representante">
+          <End Role="representantes" Type="Self.representantes" Multiplicity="0..1" />
+          <End Role="representante_estudiante" Type="Self.representante_estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="representantes">
+              <PropertyRef Name="idRepresentantes" />
+            </Principal>
+            <Dependent Role="representante_estudiante">
+              <PropertyRef Name="idRepresentante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rubro_de">
+          <End Role="rubros_det" Type="Self.rubros_det" Multiplicity="1" />
+          <End Role="rubros" Type="Self.rubros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rubros_det">
+              <PropertyRef Name="idrubros_det" />
+            </Principal>
+            <Dependent Role="rubros">
+              <PropertyRef Name="Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_perfil">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="perfil_usuario" Type="Self.perfil_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="perfil_usuario">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="simpp_maarModelStoreContainer">
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="cuotas" EntityType="Self.cuotas" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="curso_paralelo" EntityType="Self.curso_paralelo" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="cursos" EntityType="Self.cursos" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="establecimiento" EntityType="Self.establecimiento" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="estudiante" EntityType="Self.estudiante" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="fact_cab" EntityType="Self.fact_cab" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="fact_det" EntityType="Self.fact_det" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="matricula" EntityType="Self.matricula" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="nacionalidad" EntityType="Self.nacionalidad" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="paralelos" EntityType="Self.paralelos" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="perfil" EntityType="Self.perfil" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="perfil_usuario" EntityType="Self.perfil_usuario" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="periodo" EntityType="Self.periodo" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="representante_estudiante" EntityType="Self.representante_estudiante" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="representantes" EntityType="Self.representantes" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="rubros" EntityType="Self.rubros" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="rubros_det" EntityType="Self.rubros_det" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="simpp_maar" store:Type="Tables" />
+          <EntitySet Name="cuotas_completa" EntityType="Self.cuotas_completa" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`cuotas_completa`.`ID`, 
+`cuotas_completa`.`idmatricula`, 
+`cuotas_completa`.`Tipo`, 
+`cuotas_completa`.`Fecha de pago`, 
+`cuotas_completa`.`Costo`, 
+`cuotas_completa`.`Fecha de Pago Realizado`, 
+`cuotas_completa`.`Descuento`, 
+`cuotas_completa`.`Detalle`
+FROM `cuotas_completa` AS `cuotas_completa`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="curso_completo" EntityType="Self.curso_completo" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`curso_completo`.`ID`, 
+`curso_completo`.`Curso`, 
+`curso_completo`.`Paralelo`, 
+`curso_completo`.`Capacidad`, 
+`curso_completo`.`Estado`
+FROM `curso_completo` AS `curso_completo`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="curso_completo_nombres_unidos" EntityType="Self.curso_completo_nombres_unidos" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`curso_completo_nombres_unidos`.`ID`, 
+`curso_completo_nombres_unidos`.`Curso`, 
+`curso_completo_nombres_unidos`.`Capacidad`, 
+`curso_completo_nombres_unidos`.`Estado`
+FROM `curso_completo_nombres_unidos` AS `curso_completo_nombres_unidos`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="estudiante_madre" EntityType="Self.estudiante_madre" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`estudiante_madre`.`IDEstudiante`, 
+`estudiante_madre`.`idRepresentante`, 
+`estudiante_madre`.`Representante`, 
+`estudiante_madre`.`Cedula`, 
+`estudiante_madre`.`correo`, 
+`estudiante_madre`.`CorreoTrabajo`, 
+`estudiante_madre`.`TelefonoTrabajo`, 
+`estudiante_madre`.`telefono`, 
+`estudiante_madre`.`NiveldeEducacion`, 
+`estudiante_madre`.`Ocupacion`, 
+`estudiante_madre`.`viveEstudiante`
+FROM `estudiante_madre` AS `estudiante_madre`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="estudiante_padre" EntityType="Self.estudiante_padre" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`estudiante_padre`.`ID`, 
+`estudiante_padre`.`Representante`, 
+`estudiante_padre`.`Cedula`, 
+`estudiante_padre`.`correo`, 
+`estudiante_padre`.`CorreoTrabajo`, 
+`estudiante_padre`.`TelefonoTrabajo`, 
+`estudiante_padre`.`telefono`, 
+`estudiante_padre`.`NiveldeEducacion`, 
+`estudiante_padre`.`Ocupacion`, 
+`estudiante_padre`.`viveEstudiante`
+FROM `estudiante_padre` AS `estudiante_padre`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="estudiantepersona" EntityType="Self.estudiantepersona" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`estudiantepersona`.`ID`, 
+`estudiantepersona`.`Cedula`, 
+`estudiantepersona`.`Nombre`, 
+`estudiantepersona`.`Apellidos`, 
+`estudiantepersona`.`Estado`
+FROM `estudiantepersona` AS `estudiantepersona`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="factura_detalles" EntityType="Self.factura_detalles" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`factura_detalles`.`idmatricula`, 
+`factura_detalles`.`idfact_cab`, 
+`factura_detalles`.`total`, 
+`factura_detalles`.`cantidad`, 
+`factura_detalles`.`detalle`, 
+`factura_detalles`.`idrubros`
+FROM `factura_detalles` AS `factura_detalles`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="matricula_alumno" EntityType="Self.matricula_alumno" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`matricula_alumno`.`ID`, 
+`matricula_alumno`.`Nombre`, 
+`matricula_alumno`.`Apellidos`, 
+`matricula_alumno`.`cedula`, 
+`matricula_alumno`.`fecha`, 
+`matricula_alumno`.`lugar_nacimiento`, 
+`matricula_alumno`.`direccion`, 
+`matricula_alumno`.`telefono`, 
+`matricula_alumno`.`estado_civil`, 
+`matricula_alumno`.`correo`, 
+`matricula_alumno`.`Periodo`, 
+`matricula_alumno`.`Curso`, 
+`matricula_alumno`.`Paralelo`
+FROM `matricula_alumno` AS `matricula_alumno`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="matricula_completa" EntityType="Self.matricula_completa" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`matricula_completa`.`ID`, 
+`matricula_completa`.`Estudiante`, 
+`matricula_completa`.`Representante`, 
+`matricula_completa`.`Cedula`, 
+`matricula_completa`.`Periodo`, 
+`matricula_completa`.`Curso`, 
+`matricula_completa`.`Paralelo`
+FROM `matricula_completa` AS `matricula_completa`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="matricula_representante" EntityType="Self.matricula_representante" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`matricula_representante`.`ID`, 
+`matricula_representante`.`Estudiante`, 
+`matricula_representante`.`cedulaestudiante`, 
+`matricula_representante`.`Representante`, 
+`matricula_representante`.`Curso2`, 
+`matricula_representante`.`Cedula`, 
+`matricula_representante`.`correo`, 
+`matricula_representante`.`CorreoTrabajo`, 
+`matricula_representante`.`TelefonoTrabajo`, 
+`matricula_representante`.`telefono`, 
+`matricula_representante`.`NiveldeEducacion`, 
+`matricula_representante`.`Ocupacion`, 
+`matricula_representante`.`viveEstudiante`, 
+`matricula_representante`.`relacion`, 
+`matricula_representante`.`Periodo`, 
+`matricula_representante`.`Curso`, 
+`matricula_representante`.`Paralelo`, 
+`matricula_representante`.`correoestudiante`
+FROM `matricula_representante` AS `matricula_representante`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="matriculas_inactivas" EntityType="Self.matriculas_inactivas" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`matriculas_inactivas`.`ID`, 
+`matriculas_inactivas`.`Estudiante`, 
+`matriculas_inactivas`.`Cedula`, 
+`matriculas_inactivas`.`Periodo`, 
+`matriculas_inactivas`.`Curso`, 
+`matriculas_inactivas`.`Paralelo`
+FROM `matriculas_inactivas` AS `matriculas_inactivas`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="perfiles" EntityType="Self.perfiles" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`perfiles`.`idPerfil`, 
+`perfiles`.`Detalle`, 
+`perfiles`.`Descripcion`, 
+`perfiles`.`Estado`, 
+`perfiles`.`idUsuario`
+FROM `perfiles` AS `perfiles`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="representante_persona" EntityType="Self.representante_persona" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`representante_persona`.`ID`, 
+`representante_persona`.`Cedula`, 
+`representante_persona`.`Nombre`, 
+`representante_persona`.`IDestudiante`
+FROM `representante_persona` AS `representante_persona`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="representantecompleto" EntityType="Self.representantecompleto" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`representantecompleto`.`ID`, 
+`representantecompleto`.`cedula`, 
+`representantecompleto`.`Nombre`
+FROM `representantecompleto` AS `representantecompleto`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="rubros_completo" EntityType="Self.rubros_completo" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`rubros_completo`.`ID`, 
+`rubros_completo`.`Detalle`, 
+`rubros_completo`.`Costo`, 
+`rubros_completo`.`Fecha de pago`, 
+`rubros_completo`.`Estado`, 
+`rubros_completo`.`idUsuario`
+FROM `rubros_completo` AS `rubros_completo`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="staff" EntityType="Self.staff" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`staff`.`ID`, 
+`staff`.`cedula`, 
+`staff`.`Nombre`, 
+`staff`.`estado`
+FROM `staff` AS `staff`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="usuario_completo" EntityType="Self.usuario_completo" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`usuario_completo`.`ID`, 
+`usuario_completo`.`Nombre`, 
+`usuario_completo`.`Usuario`, 
+`usuario_completo`.`Estado`
+FROM `usuario_completo` AS `usuario_completo`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="zanual_pagos_matricula" EntityType="Self.zanual_pagos_matricula" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`zanual_pagos_matricula`.`idmatricula`, 
+`zanual_pagos_matricula`.`idcuotas`, 
+`zanual_pagos_matricula`.`detalle`, 
+`zanual_pagos_matricula`.`Suma`, 
+`zanual_pagos_matricula`.`Pagar`, 
+`zanual_pagos_matricula`.`descuento`, 
+`zanual_pagos_matricula`.`estudiante`, 
+`zanual_pagos_matricula`.`representante`, 
+`zanual_pagos_matricula`.`cedula`, 
+`zanual_pagos_matricula`.`periodo`, 
+`zanual_pagos_matricula`.`Curso`, 
+`zanual_pagos_matricula`.`telefono`, 
+`zanual_pagos_matricula`.`direccion`
+FROM `zanual_pagos_matricula` AS `zanual_pagos_matricula`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="zanual_pagos_meses" EntityType="Self.zanual_pagos_meses" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`zanual_pagos_meses`.`idmatricula`, 
+`zanual_pagos_meses`.`idcuotas`, 
+`zanual_pagos_meses`.`detalle`, 
+`zanual_pagos_meses`.`Suma`, 
+`zanual_pagos_meses`.`Pagar`, 
+`zanual_pagos_meses`.`descuento`, 
+`zanual_pagos_meses`.`estudiante`, 
+`zanual_pagos_meses`.`representante`, 
+`zanual_pagos_meses`.`cedula`, 
+`zanual_pagos_meses`.`periodo`, 
+`zanual_pagos_meses`.`Curso`, 
+`zanual_pagos_meses`.`telefono`, 
+`zanual_pagos_meses`.`direccion`
+FROM `zanual_pagos_meses` AS `zanual_pagos_meses`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="zcabecera" EntityType="Self.zcabecera" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`zcabecera`.`id`, 
+`zcabecera`.`estudiante`, 
+`zcabecera`.`representante`, 
+`zcabecera`.`cedula`, 
+`zcabecera`.`periodo`, 
+`zcabecera`.`curso`, 
+`zcabecera`.`paralelo`, 
+`zcabecera`.`telefono`, 
+`zcabecera`.`direccion`, 
+`zcabecera`.`idfact_cab`, 
+`zcabecera`.`fecha`
+FROM `zcabecera` AS `zcabecera`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="zcuotas_matricula" EntityType="Self.zcuotas_matricula" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`zcuotas_matricula`.`idmatricula`, 
+`zcuotas_matricula`.`idcuotas`, 
+`zcuotas_matricula`.`count(rd.idrubros_det)`, 
+`zcuotas_matricula`.`sum(c.pagar)`, 
+`zcuotas_matricula`.`descuento`, 
+`zcuotas_matricula`.`estudiante`, 
+`zcuotas_matricula`.`representante`, 
+`zcuotas_matricula`.`cedula`, 
+`zcuotas_matricula`.`periodo`, 
+`zcuotas_matricula`.`Curso`, 
+`zcuotas_matricula`.`telefono`, 
+`zcuotas_matricula`.`direccion`
+FROM `zcuotas_matricula` AS `zcuotas_matricula`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="zcuotas_meses" EntityType="Self.zcuotas_meses" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`zcuotas_meses`.`idmatricula`, 
+`zcuotas_meses`.`idcuotas`, 
+`zcuotas_meses`.`count(rd.idrubros_det)`, 
+`zcuotas_meses`.`sum(c.pagar)`, 
+`zcuotas_meses`.`descuento`, 
+`zcuotas_meses`.`estudiante`, 
+`zcuotas_meses`.`representante`, 
+`zcuotas_meses`.`cedula`, 
+`zcuotas_meses`.`periodo`, 
+`zcuotas_meses`.`Curso`, 
+`zcuotas_meses`.`telefono`, 
+`zcuotas_meses`.`direccion`
+FROM `zcuotas_meses` AS `zcuotas_meses`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="zpagosmensuales" EntityType="Self.zpagosmensuales" store:Type="Views" store:Schema="simpp_maar">
+            <DefiningQuery>SELECT
+`zpagosmensuales`.`idmatricula`, 
+`zpagosmensuales`.`idcuotas`, 
+`zpagosmensuales`.`detalle`, 
+`zpagosmensuales`.`Pagar`, 
+`zpagosmensuales`.`descuento`, 
+`zpagosmensuales`.`estudiante`, 
+`zpagosmensuales`.`representante`, 
+`zpagosmensuales`.`cedula`, 
+`zpagosmensuales`.`periodo`, 
+`zpagosmensuales`.`Curso`, 
+`zpagosmensuales`.`telefono`, 
+`zpagosmensuales`.`direccion`
+FROM `zpagosmensuales` AS `zpagosmensuales`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Curso_matricula" Association="Self.Curso_matricula">
+            <End Role="curso_paralelo" EntitySet="curso_paralelo" />
+            <End Role="matricula" EntitySet="matricula" />
+          </AssociationSet>
+          <AssociationSet Name="det_cab" Association="Self.det_cab">
+            <End Role="fact_cab" EntitySet="fact_cab" />
+            <End Role="fact_det" EntitySet="fact_det" />
+          </AssociationSet>
+          <AssociationSet Name="estudiante1" Association="Self.estudiante1">
+            <End Role="estudiante" EntitySet="estudiante" />
+            <End Role="representante_estudiante" EntitySet="representante_estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="factura_matricula" Association="Self.factura_matricula">
+            <End Role="matricula" EntitySet="matricula" />
+            <End Role="fact_cab" EntitySet="fact_cab" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estudiante_Persona1" Association="Self.fk_Estudiante_Persona1">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="estudiante" EntitySet="estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pagos_Matricula1" Association="Self.fk_Pagos_Matricula1">
+            <End Role="matricula" EntitySet="matricula" />
+            <End Role="cuotas" EntitySet="cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Persona_Ciudad1" Association="Self.fk_Persona_Ciudad1">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="persona" EntitySet="persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Persona_Nacionalidad1" Association="Self.fk_Persona_Nacionalidad1">
+            <End Role="nacionalidad" EntitySet="nacionalidad" />
+            <End Role="persona" EntitySet="persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Representantes_Persona1" Association="Self.fk_Representantes_Persona1">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="representantes" EntitySet="representantes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_Persona1" Association="Self.fk_Usuario_Persona1">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="matricula_estudiante" Association="Self.matricula_estudiante">
+            <End Role="estudiante" EntitySet="estudiante" />
+            <End Role="matricula" EntitySet="matricula" />
+          </AssociationSet>
+          <AssociationSet Name="matricula_representante1" Association="Self.matricula_representante1">
+            <End Role="representantes" EntitySet="representantes" />
+            <End Role="matricula" EntitySet="matricula" />
+          </AssociationSet>
+          <AssociationSet Name="pagos_rubros" Association="Self.pagos_rubros">
+            <End Role="rubros" EntitySet="rubros" />
+            <End Role="cuotas" EntitySet="cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="perfil_usuario1" Association="Self.perfil_usuario1">
+            <End Role="perfil" EntitySet="perfil" />
+            <End Role="perfil_usuario" EntitySet="perfil_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="Periodo_matricula" Association="Self.Periodo_matricula">
+            <End Role="periodo" EntitySet="periodo" />
+            <End Role="matricula" EntitySet="matricula" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_curso" Association="Self.relacion_curso">
+            <End Role="cursos" EntitySet="cursos" />
+            <End Role="curso_paralelo" EntitySet="curso_paralelo" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_paralelo" Association="Self.relacion_paralelo">
+            <End Role="paralelos" EntitySet="paralelos" />
+            <End Role="curso_paralelo" EntitySet="curso_paralelo" />
+          </AssociationSet>
+          <AssociationSet Name="representante" Association="Self.representante">
+            <End Role="representantes" EntitySet="representantes" />
+            <End Role="representante_estudiante" EntitySet="representante_estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="rubro_de" Association="Self.rubro_de">
+            <End Role="rubros_det" EntitySet="rubros_det" />
+            <End Role="rubros" EntitySet="rubros" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_perfil" Association="Self.usuario_perfil">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="perfil_usuario" EntitySet="perfil_usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="simpp_maarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personas" Relationship="Self.fk_Persona_Ciudad1" FromRole="ciudad" ToRole="persona" />
+        </EntityType>
+        <EntityType Name="cuota">
+          <Key>
+            <PropertyRef Name="idCuotas" />
+          </Key>
+          <Property Name="idCuotas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMatricula" Type="Int32" Nullable="false" />
+          <Property Name="idRubro" Type="Int32" Nullable="false" />
+          <Property Name="creado" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Fecha_pago_realizado" Type="DateTime" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="matricula" Relationship="Self.fk_Pagos_Matricula1" FromRole="cuotas" ToRole="matricula" />
+          <NavigationProperty Name="rubro" Relationship="Self.pagos_rubros" FromRole="cuotas" ToRole="rubros" />
+          <Property Name="Pagar" Type="Decimal" Nullable="false" />
+          <Property Name="Descuento" Type="Int32" />
+          <Property Name="DetalleDescuento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="curso">
+          <Key>
+            <PropertyRef Name="idCursos" />
+          </Key>
+          <Property Name="idCursos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="curso_paralelo" Relationship="simpp_maarModel.relacion_curso" FromRole="curso" ToRole="curso_paralelo" />
+        </EntityType>
+        <EntityType Name="estudiante">
+          <Key>
+            <PropertyRef Name="idEstudiante" />
+          </Key>
+          <Property Name="idEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idpersona" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="persona" Relationship="Self.fk_Estudiante_Persona1" FromRole="estudiante" ToRole="persona" />
+          <NavigationProperty Name="matriculas" Relationship="Self.matricula_estudiante" FromRole="estudiante" ToRole="matricula" />
+          <NavigationProperty Name="representante_estudiante" Relationship="simpp_maarModel.estudiante1" FromRole="estudiante" ToRole="representante_estudiante1" />
+          <Property Name="observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lugar_nacimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="fact_cab">
+          <Key>
+            <PropertyRef Name="idfact_cab" />
+          </Key>
+          <Property Name="idfact_cab" Type="Int32" Nullable="false" />
+          <Property Name="idmatricula" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" annotation:StoreGeneratedPattern="None" />
+          <Property Name="total" Type="Decimal" />
+          <Property Name="fpago" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="fact_det" Relationship="Self.dete_cab" FromRole="fact_cab" ToRole="fact_det" />
+          <NavigationProperty Name="matricula" Relationship="Self.factura_matricula" FromRole="fact_cab" ToRole="matricula" />
+        </EntityType>
+        <EntityType Name="fact_det">
+          <Key>
+            <PropertyRef Name="idfact_det" />
+          </Key>
+          <Property Name="idfact_det" Type="Int32" Nullable="false" />
+          <Property Name="idfact_cab" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <NavigationProperty Name="fact_cab" Relationship="Self.dete_cab" FromRole="fact_det" ToRole="fact_cab" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="Detalle" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idRubros" Type="Int32" />
+        </EntityType>
+        <EntityType Name="matricula">
+          <Key>
+            <PropertyRef Name="idMatricula" />
+          </Key>
+          <Property Name="idMatricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEstudiante" Type="Int32" Nullable="false" />
+          <Property Name="idPeriodo" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cuotas" Relationship="Self.fk_Pagos_Matricula1" FromRole="matricula" ToRole="cuotas" />
+          <NavigationProperty Name="estudiante" Relationship="Self.matricula_estudiante" FromRole="matricula" ToRole="estudiante" />
+          <NavigationProperty Name="fact_cab" Relationship="Self.factura_matricula" FromRole="matricula" ToRole="fact_cab" />
+          <NavigationProperty Name="periodo" Relationship="Self.Periodo_matricula" FromRole="matricula" ToRole="periodo" />
+          <Property Name="idRepresentante" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="representante" Relationship="simpp_maarModel.matricula_representante" FromRole="matricula" ToRole="representante" />
+          <Property Name="idCurso_paralelo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="curso_paralelo" Relationship="simpp_maarModel.Curso_matricula1" FromRole="matricula" ToRole="curso_paralelo" />
+        </EntityType>
+        <EntityType Name="nacionalidad">
+          <Key>
+            <PropertyRef Name="idNacionalidad" />
+          </Key>
+          <Property Name="idNacionalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personas" Relationship="Self.fk_Persona_Nacionalidad1" FromRole="nacionalidad" ToRole="persona" />
+        </EntityType>
+        <EntityType Name="paralelo">
+          <Key>
+            <PropertyRef Name="idParalelos" />
+          </Key>
+          <Property Name="idParalelos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="curso_paralelo" Relationship="simpp_maarModel.relacion_paralelo" FromRole="paralelo" ToRole="curso_paralelo" />
+        </EntityType>
+        <EntityType Name="perfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="perfil_usuario" Relationship="Self.perfil_usuario1" FromRole="perfil" ToRole="perfil_usuario" />
+        </EntityType>
+        <EntityType Name="perfil_usuario">
+          <Key>
+            <PropertyRef Name="idPerfil_usuario" />
+          </Key>
+          <Property Name="idPerfil_usuario" Type="Int32" Nullable="false" />
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <NavigationProperty Name="perfil" Relationship="Self.perfil_usuario1" FromRole="perfil_usuario" ToRole="perfil" />
+          <NavigationProperty Name="usuario" Relationship="Self.usuario_perfil" FromRole="perfil_usuario" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="periodo">
+          <Key>
+            <PropertyRef Name="idPeriodo" />
+          </Key>
+          <Property Name="idPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="matriculas" Relationship="Self.Periodo_matricula" FromRole="periodo" ToRole="matricula" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IDCiudad" Type="Int32" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Genero" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_nacimiento" Type="DateTime" />
+          <Property Name="Estado_civil" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idNacionalidad" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ciudad" Relationship="Self.fk_Persona_Ciudad1" FromRole="persona" ToRole="ciudad" />
+          <NavigationProperty Name="estudiantes" Relationship="Self.fk_Estudiante_Persona1" FromRole="persona" ToRole="estudiante" />
+          <NavigationProperty Name="nacionalidad" Relationship="Self.fk_Persona_Nacionalidad1" FromRole="persona" ToRole="nacionalidad" />
+          <NavigationProperty Name="representantes" Relationship="Self.fk_Representantes_Persona1" FromRole="persona" ToRole="representantes" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Usuario_Persona1" FromRole="persona" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="representante">
+          <Key>
+            <PropertyRef Name="idRepresentantes" />
+          </Key>
+          <Property Name="idRepresentantes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idpersona" Type="Int32" />
+          <Property Name="trabaja" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="direcciont" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefonot" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="correot" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="persona" Relationship="Self.fk_Representantes_Persona1" FromRole="representantes" ToRole="persona" />
+          <NavigationProperty Name="matriculas" Relationship="simpp_maarModel.matricula_representante" FromRole="representante" ToRole="matricula" />
+          <NavigationProperty Name="representante_estudiante" Relationship="simpp_maarModel.representante1" FromRole="representante" ToRole="representante_estudiante1" />
+          <Property Name="viveEstudiante" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="relacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nivelEdu" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="empresa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="rubro">
+          <Key>
+            <PropertyRef Name="idRubros" />
+          </Key>
+          <Property Name="idRubros" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="Int32" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Nullable="false" />
+          <Property Name="Fecha_registro" Type="DateTime" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Fecha_de_pago" Type="DateTime" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cuotas" Relationship="Self.pagos_rubros" FromRole="rubros" ToRole="cuotas" />
+          <NavigationProperty Name="rubros_det" Relationship="simpp_maarModel.rubro_de" FromRole="rubro" ToRole="rubros_det" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="Desde" Type="DateTime" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Hasta" Type="DateTime" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+          <NavigationProperty Name="perfil_usuario" Relationship="Self.usuario_perfil" FromRole="usuario" ToRole="perfil_usuario" />
+          <NavigationProperty Name="persona" Relationship="Self.fk_Usuario_Persona1" FromRole="usuario" ToRole="persona" />
+        </EntityType>
+        <Association Name="fk_Persona_Ciudad1">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="IDCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pagos_Matricula1">
+          <End Role="matricula" Type="Self.matricula" Multiplicity="1" />
+          <End Role="cuotas" Type="Self.cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="matricula">
+              <PropertyRef Name="idMatricula" />
+            </Principal>
+            <Dependent Role="cuotas">
+              <PropertyRef Name="idMatricula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pagos_rubros">
+          <End Role="rubros" Type="Self.rubro" Multiplicity="1" />
+          <End Role="cuotas" Type="Self.cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rubros">
+              <PropertyRef Name="idRubros" />
+            </Principal>
+            <Dependent Role="cuotas">
+              <PropertyRef Name="idRubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estudiante_Persona1">
+          <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+          <End Role="estudiante" Type="Self.estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="estudiante">
+              <PropertyRef Name="idpersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="matricula_estudiante">
+          <End Role="estudiante" Type="Self.estudiante" Multiplicity="1" />
+          <End Role="matricula" Type="Self.matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estudiante">
+              <PropertyRef Name="idEstudiante" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dete_cab">
+          <End Role="fact_cab" Type="Self.fact_cab" Multiplicity="1" />
+          <End Role="fact_det" Type="Self.fact_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fact_cab">
+              <PropertyRef Name="idfact_cab" />
+            </Principal>
+            <Dependent Role="fact_det">
+              <PropertyRef Name="idfact_cab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="factura_matricula">
+          <End Role="matricula" Type="Self.matricula" Multiplicity="0..1" />
+          <End Role="fact_cab" Type="Self.fact_cab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="matricula">
+              <PropertyRef Name="idMatricula" />
+            </Principal>
+            <Dependent Role="fact_cab">
+              <PropertyRef Name="idmatricula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Periodo_matricula">
+          <End Role="periodo" Type="Self.periodo" Multiplicity="1" />
+          <End Role="matricula" Type="Self.matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodo">
+              <PropertyRef Name="idPeriodo" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_Nacionalidad1">
+          <End Role="nacionalidad" Type="Self.nacionalidad" Multiplicity="0..1" />
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nacionalidad">
+              <PropertyRef Name="idNacionalidad" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="idNacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="perfil_usuario1">
+          <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
+          <End Role="perfil_usuario" Type="Self.perfil_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="perfil_usuario">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_perfil">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="perfil_usuario" Type="Self.perfil_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="perfil_usuario">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Representantes_Persona1">
+          <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+          <End Role="representantes" Type="Self.representante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="representantes">
+              <PropertyRef Name="idpersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_Persona1">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="simpp_maarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudads" EntityType="Self.ciudad" />
+          <EntitySet Name="cuotas" EntityType="Self.cuota" />
+          <EntitySet Name="cursos" EntityType="Self.curso" />
+          <EntitySet Name="estudiantes" EntityType="Self.estudiante" />
+          <EntitySet Name="fact_cab" EntityType="Self.fact_cab" />
+          <EntitySet Name="fact_det" EntityType="Self.fact_det" />
+          <EntitySet Name="matriculas" EntityType="Self.matricula" />
+          <EntitySet Name="nacionalidads" EntityType="Self.nacionalidad" />
+          <EntitySet Name="paralelos" EntityType="Self.paralelo" />
+          <EntitySet Name="perfils" EntityType="Self.perfil" />
+          <EntitySet Name="perfil_usuario" EntityType="Self.perfil_usuario" />
+          <EntitySet Name="periodoes" EntityType="Self.periodo" />
+          <EntitySet Name="personas" EntityType="Self.persona" />
+          <EntitySet Name="representantes" EntityType="Self.representante" />
+          <EntitySet Name="rubros" EntityType="Self.rubro" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <AssociationSet Name="fk_Persona_Ciudad1" Association="Self.fk_Persona_Ciudad1">
+            <End Role="ciudad" EntitySet="ciudads" />
+            <End Role="persona" EntitySet="personas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pagos_Matricula1" Association="Self.fk_Pagos_Matricula1">
+            <End Role="matricula" EntitySet="matriculas" />
+            <End Role="cuotas" EntitySet="cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="pagos_rubros" Association="Self.pagos_rubros">
+            <End Role="rubros" EntitySet="rubros" />
+            <End Role="cuotas" EntitySet="cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estudiante_Persona1" Association="Self.fk_Estudiante_Persona1">
+            <End Role="persona" EntitySet="personas" />
+            <End Role="estudiante" EntitySet="estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="matricula_estudiante" Association="Self.matricula_estudiante">
+            <End Role="estudiante" EntitySet="estudiantes" />
+            <End Role="matricula" EntitySet="matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="dete_cab" Association="Self.dete_cab">
+            <End Role="fact_cab" EntitySet="fact_cab" />
+            <End Role="fact_det" EntitySet="fact_det" />
+          </AssociationSet>
+          <AssociationSet Name="factura_matricula" Association="Self.factura_matricula">
+            <End Role="matricula" EntitySet="matriculas" />
+            <End Role="fact_cab" EntitySet="fact_cab" />
+          </AssociationSet>
+          <AssociationSet Name="Periodo_matricula" Association="Self.Periodo_matricula">
+            <End Role="periodo" EntitySet="periodoes" />
+            <End Role="matricula" EntitySet="matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Persona_Nacionalidad1" Association="Self.fk_Persona_Nacionalidad1">
+            <End Role="nacionalidad" EntitySet="nacionalidads" />
+            <End Role="persona" EntitySet="personas" />
+          </AssociationSet>
+          <AssociationSet Name="perfil_usuario1" Association="Self.perfil_usuario1">
+            <End Role="perfil" EntitySet="perfils" />
+            <End Role="perfil_usuario" EntitySet="perfil_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_perfil" Association="Self.usuario_perfil">
+            <End Role="usuario" EntitySet="usuarios" />
+            <End Role="perfil_usuario" EntitySet="perfil_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Representantes_Persona1" Association="Self.fk_Representantes_Persona1">
+            <End Role="persona" EntitySet="personas" />
+            <End Role="representantes" EntitySet="representantes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_Persona1" Association="Self.fk_Usuario_Persona1">
+            <End Role="persona" EntitySet="personas" />
+            <End Role="usuario" EntitySet="usuarios" />
+          </AssociationSet>
+          <EntitySet Name="establecimientoes" EntityType="simpp_maarModel.establecimiento" />
+          <EntitySet Name="estudiantepersonas" EntityType="simpp_maarModel.estudiantepersona" />
+          <AssociationSet Name="matricula_representante" Association="simpp_maarModel.matricula_representante">
+            <End EntitySet="representantes" Role="representante" />
+            <End EntitySet="matriculas" Role="matricula" />
+          </AssociationSet>
+          <EntitySet Name="representante_estudiante1" EntityType="simpp_maarModel.representante_estudiante1" />
+          <AssociationSet Name="estudiante1" Association="simpp_maarModel.estudiante1">
+            <End Role="estudiante" EntitySet="estudiantes" />
+            <End Role="representante_estudiante1" EntitySet="representante_estudiante1" />
+          </AssociationSet>
+          <AssociationSet Name="representante1" Association="simpp_maarModel.representante1">
+            <End Role="representante" EntitySet="representantes" />
+            <End Role="representante_estudiante1" EntitySet="representante_estudiante1" />
+          </AssociationSet>
+          <EntitySet Name="representante_persona" EntityType="simpp_maarModel.representante_persona" />
+          <EntitySet Name="representantecompletoes" EntityType="simpp_maarModel.representantecompleto" />
+          <EntitySet Name="matricula_completa" EntityType="simpp_maarModel.matricula_completa" />
+          <EntitySet Name="curso_paralelo" EntityType="simpp_maarModel.curso_paralelo" />
+          <AssociationSet Name="Curso_matricula1" Association="simpp_maarModel.Curso_matricula1">
+            <End Role="curso_paralelo" EntitySet="curso_paralelo" />
+            <End Role="matricula" EntitySet="matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_curso" Association="simpp_maarModel.relacion_curso">
+            <End Role="curso" EntitySet="cursos" />
+            <End Role="curso_paralelo" EntitySet="curso_paralelo" />
+          </AssociationSet>
+          <AssociationSet Name="relacion_paralelo" Association="simpp_maarModel.relacion_paralelo">
+            <End Role="paralelo" EntitySet="paralelos" />
+            <End Role="curso_paralelo" EntitySet="curso_paralelo" />
+          </AssociationSet>
+          <EntitySet Name="curso_completo" EntityType="simpp_maarModel.curso_completo" />
+          <EntitySet Name="usuario_completo" EntityType="simpp_maarModel.usuario_completo" />
+          <EntitySet Name="staffs" EntityType="simpp_maarModel.staff" />
+          <EntitySet Name="perfiles" EntityType="simpp_maarModel.perfile" />
+          <EntitySet Name="rubros_det" EntityType="simpp_maarModel.rubros_det" />
+          <EntitySet Name="rubros_completo" EntityType="simpp_maarModel.rubros_completo" />
+          <AssociationSet Name="rubro_de" Association="simpp_maarModel.rubro_de">
+            <End Role="rubros_det" EntitySet="rubros_det" />
+            <End Role="rubro" EntitySet="rubros" />
+          </AssociationSet>
+          <EntitySet Name="cuotas_completa" EntityType="simpp_maarModel.cuotas_completa" />
+          <EntitySet Name="estudiante_madre" EntityType="simpp_maarModel.estudiante_madre" />
+          <EntitySet Name="estudiante_padre" EntityType="simpp_maarModel.estudiante_padre" />
+          <EntitySet Name="matricula_alumno" EntityType="simpp_maarModel.matricula_alumno" />
+          <EntitySet Name="matricula_representante1" EntityType="simpp_maarModel.matricula_representante1" />
+          <EntitySet Name="zcabeceras" EntityType="simpp_maarModel.zcabecera" />
+          <EntitySet Name="factura_detalles" EntityType="simpp_maarModel.factura_detalles" />
+          <EntitySet Name="zcuotas_matricula" EntityType="simpp_maarModel.zcuotas_matricula" />
+          <EntitySet Name="zcuotas_meses" EntityType="simpp_maarModel.zcuotas_meses" />
+          <EntitySet Name="curso_completo_nombres_unidos" EntityType="simpp_maarModel.curso_completo_nombres_unidos" />
+          <EntitySet Name="zpagosmensuales" EntityType="simpp_maarModel.zpagosmensuale" />
+          <EntitySet Name="zanual_pagos_matricula" EntityType="simpp_maarModel.zanual_pagos_matricula" />
+          <EntitySet Name="zanual_pagos_meses" EntityType="simpp_maarModel.zanual_pagos_meses" />
+          <EntitySet Name="matriculas_inactivas" EntityType="simpp_maarModel.matriculas_inactivas" />
+        </EntityContainer>
+        <EntityType Name="establecimiento">
+          <Key>
+            <PropertyRef Name="idEstablecimiento" />
+          </Key>
+          <Property Name="idEstablecimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rector" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Seccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Resoloucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Web" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mision" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Vision" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="HImno" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Escudo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="estudiantepersona">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+        </EntityType>
+        <Association Name="matricula_representante">
+          <End Type="simpp_maarModel.representante" Multiplicity="1" Role="representante" />
+          <End Type="simpp_maarModel.matricula" Multiplicity="*" Role="matricula" />
+          <ReferentialConstraint>
+            <Principal Role="representante">
+              <PropertyRef Name="idRepresentantes" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idRepresentante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="representante_estudiante1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRepresentante" Type="Int32" />
+          <Property Name="idEstudiante" Type="Int32" />
+          <NavigationProperty Name="estudiante" Relationship="simpp_maarModel.estudiante1" FromRole="representante_estudiante1" ToRole="estudiante" />
+          <NavigationProperty Name="representante" Relationship="simpp_maarModel.representante1" FromRole="representante_estudiante1" ToRole="representante" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" DefaultValue="A" />
+        </EntityType>
+        <Association Name="estudiante1">
+          <End Type="simpp_maarModel.estudiante" Role="estudiante" Multiplicity="0..1" />
+          <End Type="simpp_maarModel.representante_estudiante1" Role="representante_estudiante1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estudiante">
+              <PropertyRef Name="idEstudiante" />
+            </Principal>
+            <Dependent Role="representante_estudiante1">
+              <PropertyRef Name="idEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="representante1">
+          <End Type="simpp_maarModel.representante" Role="representante" Multiplicity="0..1" />
+          <End Type="simpp_maarModel.representante_estudiante1" Role="representante_estudiante1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="representante">
+              <PropertyRef Name="idRepresentantes" />
+            </Principal>
+            <Dependent Role="representante_estudiante1">
+              <PropertyRef Name="idRepresentante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="representante_persona">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="IDestudiante" Type="Int32" Nullable="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="representantecompleto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="matricula_completa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Curso" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Paralelo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="curso_paralelo">
+          <Key>
+            <PropertyRef Name="idcurso_paralelo" />
+          </Key>
+          <Property Name="idcurso_paralelo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCurso" Type="Int32" />
+          <Property Name="idParalelo" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="None" DefaultValue="A" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="matriculas" Relationship="simpp_maarModel.Curso_matricula1" FromRole="curso_paralelo" ToRole="matricula" />
+          <NavigationProperty Name="curso" Relationship="simpp_maarModel.relacion_curso" FromRole="curso_paralelo" ToRole="curso" />
+          <NavigationProperty Name="paralelo" Relationship="simpp_maarModel.relacion_paralelo" FromRole="curso_paralelo" ToRole="paralelo" />
+          <Property Name="capacidad" Type="Int32" />
+        </EntityType>
+        <Association Name="Curso_matricula1">
+          <End Type="simpp_maarModel.curso_paralelo" Role="curso_paralelo" Multiplicity="1" />
+          <End Type="simpp_maarModel.matricula" Role="matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso_paralelo">
+              <PropertyRef Name="idcurso_paralelo" />
+            </Principal>
+            <Dependent Role="matricula">
+              <PropertyRef Name="idCurso_paralelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_curso">
+          <End Type="simpp_maarModel.curso" Role="curso" Multiplicity="0..1" />
+          <End Type="simpp_maarModel.curso_paralelo" Role="curso_paralelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idCursos" />
+            </Principal>
+            <Dependent Role="curso_paralelo">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relacion_paralelo">
+          <End Type="simpp_maarModel.paralelo" Role="paralelo" Multiplicity="0..1" />
+          <End Type="simpp_maarModel.curso_paralelo" Role="curso_paralelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paralelo">
+              <PropertyRef Name="idParalelos" />
+            </Principal>
+            <Dependent Role="curso_paralelo">
+              <PropertyRef Name="idParalelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="curso_completo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Curso" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Paralelo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad" Type="Int32" />
+        </EntityType>
+        <EntityType Name="usuario_completo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="perfile">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="Detalle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rubros_det">
+          <Key>
+            <PropertyRef Name="idrubros_det" />
+          </Key>
+          <Property Name="idrubros_det" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="rubros" Relationship="simpp_maarModel.rubro_de" FromRole="rubros_det" ToRole="rubro" />
+        </EntityType>
+        <EntityType Name="rubros_completo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Costo" />
+            <PropertyRef Name="Fecha_de_pago" />
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Nullable="false" />
+          <Property Name="Fecha_de_pago" Type="DateTime" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="rubro_de">
+          <End Type="simpp_maarModel.rubros_det" Role="rubros_det" Multiplicity="1" />
+          <End Type="simpp_maarModel.rubro" Role="rubro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rubros_det">
+              <PropertyRef Name="idrubros_det" />
+            </Principal>
+            <Dependent Role="rubro">
+              <PropertyRef Name="Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="cuotas_completa">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="idmatricula" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_de_pago" Type="DateTime" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Nullable="false" />
+          <Property Name="Fecha_de_Pago_Realizado" Type="DateTime" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descuento" Type="Int32" />
+        </EntityType>
+        <EntityType Name="estudiante_madre">
+          <Key>
+            <PropertyRef Name="IDEstudiante" />
+          </Key>
+          <Property Name="IDEstudiante" Type="Int32" Nullable="false" />
+          <Property Name="idRepresentante" Type="Int32" Nullable="false" />
+          <Property Name="Representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorreoTrabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TelefonoTrabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NiveldeEducacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="viveEstudiante" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estudiante_padre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoTrabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoTrabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NiveldeEducacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="viveEstudiante" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="matricula_alumno">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="lugar_nacimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="estado_civil" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Curso" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Paralelo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="matricula_representante1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoTrabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoTrabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NiveldeEducacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="viveEstudiante" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="relacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Curso" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Paralelo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cedulaestudiante" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Curso2" Type="String" MaxLength="146" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correoestudiante" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zcabecera">
+          <Key>
+            <PropertyRef Name="idfact_cab" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="curso" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="paralelo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idfact_cab" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="factura_detalles">
+          <Key>
+            <PropertyRef Name="idfact_cab" />
+          </Key>
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="idfact_cab" Type="Int32" Nullable="false" />
+          <Property Name="total" Type="Decimal" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="detalle" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idrubros" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zcuotas_matricula">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+          </Key>
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="idcuotas" Type="Int32" Nullable="false" />
+          <Property Name="count_rd_idrubros_det_" Type="Int64" Nullable="false" />
+          <Property Name="sum_c_pagar_" Type="Decimal" Nullable="false" />
+          <Property Name="descuento" Type="Int32" Nullable="false" />
+          <Property Name="estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="146" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zcuotas_meses">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+          </Key>
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="idcuotas" Type="Int32" Nullable="false" />
+          <Property Name="count_rd_idrubros_det_" Type="Int64" Nullable="false" />
+          <Property Name="sum_c_pagar_" Type="Decimal" Nullable="false" />
+          <Property Name="descuento" Type="String" Nullable="false" />
+          <Property Name="estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="146" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="curso_completo_nombres_unidos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="146" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="zpagosmensuale">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+            <PropertyRef Name="idcuotas" />
+            <PropertyRef Name="Pagar" />
+            <PropertyRef Name="cedula" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="idcuotas" Type="Int32" Nullable="false" />
+          <Property Name="detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Pagar" Type="Decimal" Nullable="false" />
+          <Property Name="descuento" Type="Int32" Nullable="false" />
+          <Property Name="estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="146" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zanual_pagos_matricula">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+          </Key>
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="idcuotas" Type="Int32" Nullable="false" />
+          <Property Name="detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Suma" Type="Int64" Nullable="false" />
+          <Property Name="Pagar" Type="Decimal" Nullable="false" />
+          <Property Name="descuento" Type="Int32" Nullable="false" />
+          <Property Name="estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="146" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zanual_pagos_meses">
+          <Key>
+            <PropertyRef Name="idmatricula" />
+          </Key>
+          <Property Name="idmatricula" Type="Int32" Nullable="false" />
+          <Property Name="idcuotas" Type="Int32" Nullable="false" />
+          <Property Name="detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Suma" Type="Int64" Nullable="false" />
+          <Property Name="Pagar" Type="Decimal" Nullable="false" />
+          <Property Name="descuento" Type="Int32" Nullable="false" />
+          <Property Name="estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="representante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="146" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="matriculas_inactivas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Estudiante" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Curso" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Paralelo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="simpp_maarModelStoreContainer" CdmEntityContainer="simpp_maarEntities">
+          <EntitySetMapping Name="ciudads">
+            <EntityTypeMapping TypeName="simpp_maarModel.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuotas">
+            <EntityTypeMapping TypeName="simpp_maarModel.cuota">
+              <MappingFragment StoreEntitySet="cuotas">
+                <ScalarProperty Name="DetalleDescuento" ColumnName="DetalleDescuento" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Pagar" ColumnName="Pagar" />
+                <ScalarProperty Name="idCuotas" ColumnName="idCuotas" />
+                <ScalarProperty Name="idMatricula" ColumnName="idMatricula" />
+                <ScalarProperty Name="idRubro" ColumnName="idRubro" />
+                <ScalarProperty Name="creado" ColumnName="creado" />
+                <ScalarProperty Name="Fecha_pago_realizado" ColumnName="Fecha_pago_realizado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cursos">
+            <EntityTypeMapping TypeName="simpp_maarModel.curso">
+              <MappingFragment StoreEntitySet="cursos">
+                <ScalarProperty Name="idCursos" ColumnName="idCursos" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estudiantes">
+            <EntityTypeMapping TypeName="simpp_maarModel.estudiante">
+              <MappingFragment StoreEntitySet="estudiante">
+                <ScalarProperty Name="lugar_nacimiento" ColumnName="lugar_nacimiento" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="idEstudiante" ColumnName="idEstudiante" />
+                <ScalarProperty Name="idpersona" ColumnName="idpersona" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fact_cab">
+            <EntityTypeMapping TypeName="simpp_maarModel.fact_cab">
+              <MappingFragment StoreEntitySet="fact_cab">
+                <ScalarProperty Name="idfact_cab" ColumnName="idfact_cab" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="fpago" ColumnName="fpago" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fact_det">
+            <EntityTypeMapping TypeName="simpp_maarModel.fact_det">
+              <MappingFragment StoreEntitySet="fact_det">
+                <ScalarProperty Name="idRubros" ColumnName="idRubros" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idfact_det" ColumnName="idfact_det" />
+                <ScalarProperty Name="idfact_cab" ColumnName="idfact_cab" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="matriculas">
+            <EntityTypeMapping TypeName="simpp_maarModel.matricula">
+              <MappingFragment StoreEntitySet="matricula">
+                <ScalarProperty Name="idCurso_paralelo" ColumnName="idCurso_paralelo" />
+                <ScalarProperty Name="idRepresentante" ColumnName="idRepresentante" />
+                <ScalarProperty Name="idMatricula" ColumnName="idMatricula" />
+                <ScalarProperty Name="idEstudiante" ColumnName="idEstudiante" />
+                <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nacionalidads">
+            <EntityTypeMapping TypeName="simpp_maarModel.nacionalidad">
+              <MappingFragment StoreEntitySet="nacionalidad">
+                <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paralelos">
+            <EntityTypeMapping TypeName="simpp_maarModel.paralelo">
+              <MappingFragment StoreEntitySet="paralelos">
+                <ScalarProperty Name="idParalelos" ColumnName="idParalelos" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfils">
+            <EntityTypeMapping TypeName="simpp_maarModel.perfil">
+              <MappingFragment StoreEntitySet="perfil">
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfil_usuario">
+            <EntityTypeMapping TypeName="simpp_maarModel.perfil_usuario">
+              <MappingFragment StoreEntitySet="perfil_usuario">
+                <ScalarProperty Name="idPerfil_usuario" ColumnName="idPerfil_usuario" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="periodoes">
+            <EntityTypeMapping TypeName="simpp_maarModel.periodo">
+              <MappingFragment StoreEntitySet="periodo">
+                <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personas">
+            <EntityTypeMapping TypeName="simpp_maarModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IDCiudad" ColumnName="IDCiudad" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
+                <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="representantes">
+            <EntityTypeMapping TypeName="simpp_maarModel.representante">
+              <MappingFragment StoreEntitySet="representantes">
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="nivelEdu" ColumnName="nivelEdu" />
+                <ScalarProperty Name="relacion" ColumnName="relacion" />
+                <ScalarProperty Name="viveEstudiante" ColumnName="viveEstudiante" />
+                <ScalarProperty Name="idRepresentantes" ColumnName="idRepresentantes" />
+                <ScalarProperty Name="idpersona" ColumnName="idpersona" />
+                <ScalarProperty Name="trabaja" ColumnName="trabaja" />
+                <ScalarProperty Name="direcciont" ColumnName="direcciont" />
+                <ScalarProperty Name="telefonot" ColumnName="telefonot" />
+                <ScalarProperty Name="correot" ColumnName="correot" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rubros">
+            <EntityTypeMapping TypeName="simpp_maarModel.rubro">
+              <MappingFragment StoreEntitySet="rubros">
+                <ScalarProperty Name="idRubros" ColumnName="idRubros" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Fecha_registro" ColumnName="Fecha_registro" />
+                <ScalarProperty Name="Fecha_de_pago" ColumnName="Fecha_de_pago" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="simpp_maarModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="establecimientoes">
+            <EntityTypeMapping TypeName="simpp_maarModel.establecimiento">
+              <MappingFragment StoreEntitySet="establecimiento">
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Escudo" ColumnName="Escudo" />
+                <ScalarProperty Name="HImno" ColumnName="HImno" />
+                <ScalarProperty Name="Vision" ColumnName="Vision" />
+                <ScalarProperty Name="Mision" ColumnName="Mision" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Resoloucion" ColumnName="Resoloucion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+                <ScalarProperty Name="Rector" ColumnName="Rector" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idEstablecimiento" ColumnName="idEstablecimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estudiantepersonas">
+            <EntityTypeMapping TypeName="simpp_maarModel.estudiantepersona">
+              <MappingFragment StoreEntitySet="estudiantepersona">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="representante_estudiante1">
+            <EntityTypeMapping TypeName="simpp_maarModel.representante_estudiante1">
+              <MappingFragment StoreEntitySet="representante_estudiante">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idEstudiante" ColumnName="idEstudiante" />
+                <ScalarProperty Name="idRepresentante" ColumnName="idRepresentante" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="representante_persona">
+            <EntityTypeMapping TypeName="simpp_maarModel.representante_persona">
+              <MappingFragment StoreEntitySet="representante_persona">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="representantecompletoes">
+            <EntityTypeMapping TypeName="simpp_maarModel.representantecompleto">
+              <MappingFragment StoreEntitySet="representantecompleto">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="matricula_completa">
+            <EntityTypeMapping TypeName="simpp_maarModel.matricula_completa">
+              <MappingFragment StoreEntitySet="matricula_completa">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Paralelo" ColumnName="Paralelo" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Representante" ColumnName="Representante" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curso_paralelo">
+            <EntityTypeMapping TypeName="simpp_maarModel.curso_paralelo">
+              <MappingFragment StoreEntitySet="curso_paralelo">
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idParalelo" ColumnName="idParalelo" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="idcurso_paralelo" ColumnName="idcurso_paralelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curso_completo">
+            <EntityTypeMapping TypeName="simpp_maarModel.curso_completo">
+              <MappingFragment StoreEntitySet="curso_completo">
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Paralelo" ColumnName="Paralelo" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario_completo">
+            <EntityTypeMapping TypeName="simpp_maarModel.usuario_completo">
+              <MappingFragment StoreEntitySet="usuario_completo">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="simpp_maarModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perfiles">
+            <EntityTypeMapping TypeName="simpp_maarModel.perfile">
+              <MappingFragment StoreEntitySet="perfiles">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rubros_det">
+            <EntityTypeMapping TypeName="simpp_maarModel.rubros_det">
+              <MappingFragment StoreEntitySet="rubros_det">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="idrubros_det" ColumnName="idrubros_det" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rubros_completo">
+            <EntityTypeMapping TypeName="simpp_maarModel.rubros_completo">
+              <MappingFragment StoreEntitySet="rubros_completo">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Fecha_de_pago" ColumnName="Fecha de pago" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuotas_completa">
+            <EntityTypeMapping TypeName="simpp_maarModel.cuotas_completa">
+              <MappingFragment StoreEntitySet="cuotas_completa">
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Fecha_de_Pago_Realizado" ColumnName="Fecha de Pago Realizado" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Fecha_de_pago" ColumnName="Fecha de pago" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estudiante_madre">
+            <EntityTypeMapping TypeName="simpp_maarModel.estudiante_madre">
+              <MappingFragment StoreEntitySet="estudiante_madre">
+                <ScalarProperty Name="viveEstudiante" ColumnName="viveEstudiante" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="NiveldeEducacion" ColumnName="NiveldeEducacion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="TelefonoTrabajo" ColumnName="TelefonoTrabajo" />
+                <ScalarProperty Name="CorreoTrabajo" ColumnName="CorreoTrabajo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Representante" ColumnName="Representante" />
+                <ScalarProperty Name="idRepresentante" ColumnName="idRepresentante" />
+                <ScalarProperty Name="IDEstudiante" ColumnName="IDEstudiante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estudiante_padre">
+            <EntityTypeMapping TypeName="simpp_maarModel.estudiante_padre">
+              <MappingFragment StoreEntitySet="estudiante_padre">
+                <ScalarProperty Name="viveEstudiante" ColumnName="viveEstudiante" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="NiveldeEducacion" ColumnName="NiveldeEducacion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="TelefonoTrabajo" ColumnName="TelefonoTrabajo" />
+                <ScalarProperty Name="CorreoTrabajo" ColumnName="CorreoTrabajo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Representante" ColumnName="Representante" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="matricula_alumno">
+            <EntityTypeMapping TypeName="simpp_maarModel.matricula_alumno">
+              <MappingFragment StoreEntitySet="matricula_alumno">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="Paralelo" ColumnName="Paralelo" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estado_civil" ColumnName="estado_civil" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="lugar_nacimiento" ColumnName="lugar_nacimiento" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="matricula_representante1">
+            <EntityTypeMapping TypeName="simpp_maarModel.matricula_representante1">
+              <MappingFragment StoreEntitySet="matricula_representante">
+                <ScalarProperty Name="correoestudiante" ColumnName="correoestudiante" />
+                <ScalarProperty Name="Curso2" ColumnName="Curso2" />
+                <ScalarProperty Name="cedulaestudiante" ColumnName="cedulaestudiante" />
+                <ScalarProperty Name="Paralelo" ColumnName="Paralelo" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="relacion" ColumnName="relacion" />
+                <ScalarProperty Name="viveEstudiante" ColumnName="viveEstudiante" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="NiveldeEducacion" ColumnName="NiveldeEducacion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="TelefonoTrabajo" ColumnName="TelefonoTrabajo" />
+                <ScalarProperty Name="CorreoTrabajo" ColumnName="CorreoTrabajo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Representante" ColumnName="Representante" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zcabeceras">
+            <EntityTypeMapping TypeName="simpp_maarModel.zcabecera">
+              <MappingFragment StoreEntitySet="zcabecera">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idfact_cab" ColumnName="idfact_cab" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="paralelo" ColumnName="paralelo" />
+                <ScalarProperty Name="curso" ColumnName="curso" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="factura_detalles">
+            <EntityTypeMapping TypeName="simpp_maarModel.factura_detalles">
+              <MappingFragment StoreEntitySet="factura_detalles">
+                <ScalarProperty Name="idrubros" ColumnName="idrubros" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="idfact_cab" ColumnName="idfact_cab" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zcuotas_matricula">
+            <EntityTypeMapping TypeName="simpp_maarModel.zcuotas_matricula">
+              <MappingFragment StoreEntitySet="zcuotas_matricula">
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="sum_c_pagar_" ColumnName="sum(c.pagar)" />
+                <ScalarProperty Name="count_rd_idrubros_det_" ColumnName="count(rd.idrubros_det)" />
+                <ScalarProperty Name="idcuotas" ColumnName="idcuotas" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zcuotas_meses">
+            <EntityTypeMapping TypeName="simpp_maarModel.zcuotas_meses">
+              <MappingFragment StoreEntitySet="zcuotas_meses">
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="sum_c_pagar_" ColumnName="sum(c.pagar)" />
+                <ScalarProperty Name="count_rd_idrubros_det_" ColumnName="count(rd.idrubros_det)" />
+                <ScalarProperty Name="idcuotas" ColumnName="idcuotas" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curso_completo_nombres_unidos">
+            <EntityTypeMapping TypeName="simpp_maarModel.curso_completo_nombres_unidos">
+              <MappingFragment StoreEntitySet="curso_completo_nombres_unidos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zpagosmensuales">
+            <EntityTypeMapping TypeName="simpp_maarModel.zpagosmensuale">
+              <MappingFragment StoreEntitySet="zpagosmensuales">
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="Pagar" ColumnName="Pagar" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="idcuotas" ColumnName="idcuotas" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zanual_pagos_matricula">
+            <EntityTypeMapping TypeName="simpp_maarModel.zanual_pagos_matricula">
+              <MappingFragment StoreEntitySet="zanual_pagos_matricula">
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="Pagar" ColumnName="Pagar" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="idcuotas" ColumnName="idcuotas" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zanual_pagos_meses">
+            <EntityTypeMapping TypeName="simpp_maarModel.zanual_pagos_meses">
+              <MappingFragment StoreEntitySet="zanual_pagos_meses">
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="Pagar" ColumnName="Pagar" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="idcuotas" ColumnName="idcuotas" />
+                <ScalarProperty Name="idmatricula" ColumnName="idmatricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="matriculas_inactivas">
+            <EntityTypeMapping TypeName="simpp_maarModel.matriculas_inactivas">
+              <MappingFragment StoreEntitySet="matriculas_inactivas">
+                <ScalarProperty Name="Paralelo" ColumnName="Paralelo" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

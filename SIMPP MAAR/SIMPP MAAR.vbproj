@@ -1,0 +1,1004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F8941BD-4A8E-4AB1-9D3B-8CB13F3407AD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SIMPP_MAAR.My.MyApplication</StartupObject>
+    <RootNamespace>SIMPP_MAAR</RootNamespace>
+    <AssemblyName>SIMPP MAAR</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>SIMPP MAAR</ProductName>
+    <PublisherName>Adrian Coque</PublisherName>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsUrl>C:\Users\tony_\Desktop</BootstrapperComponentsUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SIMPP MAAR.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SIMPP MAAR.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\computer_edit.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>9336CD6FB10F47AE6C0A855D1FDB96C977A1969F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SIMPP MAAR_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.8\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.0.9.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.NET.2.0.9.3\lib\net45\MySqlBackup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>..\packages\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ciudad.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\ImagenDB.vb" />
+    <Compile Include="Clases\simpp_maarEntities.vb" />
+    <Compile Include="cuota.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuotas_completa.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="curso.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="curso_completo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="curso_completo_nombres_unidos.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="curso_paralelo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="establecimiento.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estudiante.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estudiantepersona.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estudiante_madre.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estudiante_padre.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="factura_detalles.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fact_cab.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fact_det.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp201.Designer.vb">
+      <DependentUpon>Simpp201.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp201.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp201B.Designer.vb">
+      <DependentUpon>Simpp201B.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp201B.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp202.Designer.vb">
+      <DependentUpon>Simpp202.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp202.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp203.Designer.vb">
+      <DependentUpon>Simpp203.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp203.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp204.Designer.vb">
+      <DependentUpon>Simpp204.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp204.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp205.Designer.vb">
+      <DependentUpon>Simpp205.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp205.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp206.Designer.vb">
+      <DependentUpon>Simpp206.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp206.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp207.Designer.vb">
+      <DependentUpon>Simpp207.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp207.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp208.Designer.vb">
+      <DependentUpon>Simpp208.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp208.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp209.Designer.vb">
+      <DependentUpon>Simpp209.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdministrador\Simpp209.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsInstitucion\Simpp101.Designer.vb">
+      <DependentUpon>Simpp101.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsInstitucion\Simpp101.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsInstitucion\Simpp102.Designer.vb">
+      <DependentUpon>Simpp102.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsInstitucion\Simpp102.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp301.Designer.vb">
+      <DependentUpon>Simpp301.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp301.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp301A.Designer.vb">
+      <DependentUpon>Simpp301A.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp301A.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp302.Designer.vb">
+      <DependentUpon>Simpp302.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp302.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp302A4.Designer.vb">
+      <DependentUpon>Simpp302A4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp302A4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp305.Designer.vb">
+      <DependentUpon>Simpp305.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp305.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\SImpp303.Designer.vb">
+      <DependentUpon>SImpp303.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\SImpp303.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp305B.Designer.vb">
+      <DependentUpon>Simpp305B.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp305B.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp306.Designer.vb">
+      <DependentUpon>Simpp306.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp306.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp307.Designer.vb">
+      <DependentUpon>Simpp307.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp307.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp308.Designer.vb">
+      <DependentUpon>Simpp308.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMatriculacion\Simpp308.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp401.Designer.vb">
+      <DependentUpon>Simpp401.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp401.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp403.Designer.vb">
+      <DependentUpon>Simpp403.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp403.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp404.Designer.vb">
+      <DependentUpon>Simpp404.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp404.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp405.Designer.vb">
+      <DependentUpon>Simpp405.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp405.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp406.Designer.vb">
+      <DependentUpon>Simpp406.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsReportes\Simpp406.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Simpp000.Designer.vb">
+      <DependentUpon>Simpp000.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Simpp000.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SimppAcercaDe.Designer.vb">
+      <DependentUpon>SimppAcercaDe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SimppAcercaDe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SimppLogin.Designer.vb">
+      <DependentUpon>SimppLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SimppLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\ClasesI.vb" />
+    <Compile Include="Helpers\FuncionesAyuda.vb" />
+    <Compile Include="matricula.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="matriculas_inactivas.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="matricula_alumno.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="matricula_completa.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="matricula_representante1.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="nacionalidad.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="paralelo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="perfil.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="perfile.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="perfil_usuario.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="periodo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="persona.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Factura.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Factura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FichaMatricula.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FichaMatricula.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteAnual.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteAnual.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteCuotasMatriculas.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteCuotasMatriculas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteCuotasMeses.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteCuotasMeses.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteListaAlumnosCurso.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteListaAlumnosCurso.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteListaDeAlumnosCompleta.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteListaDeAlumnosCompleta.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteMatricula.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteMatricula.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Reporte.Designer.vb">
+      <DependentUpon>Reporte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Reporte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportePagosMensual.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportePagosMensual.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReporteRetiro.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteRetiro.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="representante.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="representantecompleto.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="representante_estudiante1.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="representante_persona.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rubro.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rubros_completo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rubros_det.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.vb" />
+    <Compile Include="staff.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario_completo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zanual_pagos_matricula.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zanual_pagos_meses.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zcabecera.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zcuotas_matricula.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zcuotas_meses.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zpagosmensuale.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp201.resx">
+      <DependentUpon>Simpp201.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp201B.resx">
+      <DependentUpon>Simpp201B.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp202.resx">
+      <DependentUpon>Simpp202.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp203.resx">
+      <DependentUpon>Simpp203.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp204.resx">
+      <DependentUpon>Simpp204.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp205.resx">
+      <DependentUpon>Simpp205.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp206.resx">
+      <DependentUpon>Simpp206.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp207.resx">
+      <DependentUpon>Simpp207.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp208.resx">
+      <DependentUpon>Simpp208.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsAdministrador\Simpp209.resx">
+      <DependentUpon>Simpp209.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsInstitucion\Simpp101.resx">
+      <DependentUpon>Simpp101.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsInstitucion\Simpp102.resx">
+      <DependentUpon>Simpp102.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp301.resx">
+      <DependentUpon>Simpp301.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp301A.resx">
+      <DependentUpon>Simpp301A.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp302.resx">
+      <DependentUpon>Simpp302.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp302A4.resx">
+      <DependentUpon>Simpp302A4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp305.resx">
+      <DependentUpon>Simpp305.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\SImpp303.resx">
+      <DependentUpon>SImpp303.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp305B.resx">
+      <DependentUpon>Simpp305B.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp306.resx">
+      <DependentUpon>Simpp306.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp307.resx">
+      <DependentUpon>Simpp307.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsMatriculacion\Simpp308.resx">
+      <DependentUpon>Simpp308.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsReportes\Simpp401.resx">
+      <DependentUpon>Simpp401.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsReportes\Simpp403.resx">
+      <DependentUpon>Simpp403.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsReportes\Simpp404.resx">
+      <DependentUpon>Simpp404.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsReportes\Simpp405.resx">
+      <DependentUpon>Simpp405.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsReportes\Simpp406.resx">
+      <DependentUpon>Simpp406.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Simpp000.resx">
+      <DependentUpon>Simpp000.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SimppAcercaDe.resx">
+      <DependentUpon>SimppAcercaDe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SimppLogin.resx">
+      <DependentUpon>SimppLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Factura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Factura.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FichaMatricula.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FichaMatricula.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteAnual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteAnual.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteCuotasMatriculas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteCuotasMatriculas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteCuotasMeses.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteCuotasMeses.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteListaAlumnosCurso.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteListaAlumnosCurso.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteListaDeAlumnosCompleta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteListaDeAlumnosCompleta.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteMatricula.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteMatricula.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Reporte.resx">
+      <DependentUpon>Reporte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportePagosMensual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportePagosMensual.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReporteRetiro.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteRetiro.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\matricula_completa.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="SIMPP MAAR_ClaveTemporal.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
+      <Visible>False</Visible>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.vb</LastGenOutput>
+    </Content>
+    <None Include="Resources\fondo-con-lineas-azules-375.jpg" />
+    <None Include="Resources\Restore_data_database.png" />
+    <None Include="Resources\retiro.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\Delete1.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\glossy_button_blank_red_rectangle.png" />
+    <None Include="Resources\glossy_button_blank_aqua_rectangle.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\glossy_button_blank_blue_rectangle.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\ingresoEstudiantes.png" />
+    <None Include="Resources\search_padre.png" />
+    <None Include="Resources\search_estudiante.png" />
+    <None Include="Resources\search_matricula.png" />
+    <None Include="Resources\matricula1.png" />
+    <None Include="Resources\paralelo.JPG" />
+    <None Include="Resources\curso.png" />
+    <None Include="Resources\periodo.png" />
+    <None Include="Resources\nacionalidad.bmp" />
+    <None Include="Resources\ciudad.jpg" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\certificado.png" />
+    <None Include="Resources\Backup_data_database.png" />
+    <Content Include="Resources\computer_edit.ico" />
+    <None Include="Resources\rubros.png" />
+    <None Include="Resources\usuarios.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\school.png" />
+    <None Include="Resources\representante.png" />
+    <None Include="Resources\register1.png" />
+    <None Include="Resources\persona.png" />
+    <None Include="Resources\perfil.png" />
+    <None Include="Resources\menu.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\estudiante.png" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <PublishFile Include="CrystalDecisions.CrystalReports.Engine">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ClientDoc">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Controllers">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ReportDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportSource">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Shared">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Windows.Forms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="FlashControlV71">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="MySql.Data">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="ShockwaveFlashObjects">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
