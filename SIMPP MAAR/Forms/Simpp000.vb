@@ -10,10 +10,15 @@ Namespace Forms
         ''' <summary>
         '''     Variable para saber si alguna ventana ya se encuentra abierta
         ''' </summary>
-        Private _flagOpen As Boolean = False
+        Private _flagOpen As Boolean = False        
+        ''' <summary>
+        '''     Variable para almacenar el id de usuario que se conecta a la aplicación.
+        ''' </summary>
         Private _op As Integer
 
         Private Sub simpp_000_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            ' Text es una propiedad del formulario, se accede directamente o usando la variable Me el cual indica al propio formulario
+            ' Icon también es una propiedad del mismo, Titulo y computer_edit son Recursos que son invocados gracias al Imports SIMPP_MAAR.My.Resources
             Text = Titulo
             Icon = computer_edit
             Acceso()
@@ -62,6 +67,7 @@ Namespace Forms
                                                         MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
                 If opcion.Equals(1) Then
                     _flagOpen = False
+                    ' Esto remueve todos los componentes ubicados dentro del panel de la ventana.
                     While (Panel1.Controls.Count > 0)
                         Panel1.Controls.RemoveAt(0)
                     End While
@@ -134,19 +140,30 @@ Namespace Forms
             Application.Exit()
         End Sub
 
+
         Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
             Try
+                ' tenemos las variables de conexión necesario para realizar un Backup de la pase de datos elegida
                 Dim constring = "server=localhost;user=root;pwd=TeAmoMelisa_1;database=simpp_maar;"
+                ' el nombre del archivo
                 Dim backupFile As String
+                ' creación del cuadro para escoger la ruta en donde guardar el archivo
                 Dim fileSaver As SaveFileDialog = New SaveFileDialog()
+                ' Filtro para evitar que el archivo sea grabado con otra extensión
                 fileSaver.Filter = "SQL files | *.sql"
-
+                ' Si el usuario da en Guardar procedemos
                 If fileSaver.ShowDialog() = DialogResult.OK Then
+                    ' Guardamos el nombre y la ruta del archivo
                     backupFile = fileSaver.FileName
+                    ' El using especifica que la variable solo va a ser usada dentro de este bloque
+                    ' La variable sConnection es la que permite conectar a la base de datos, aquí solo esta preparada para ser usada
                     Using sConnection As New MySqlConnection(constring)
+                        ' sqlCommand permite realizar comando hacia la base de datos
                         Using sqlCommand As New MySqlCommand()
+                            ' Pasamos el archivo que permite realizar comando a la clase MySqlBackup que permite realizar respaldos de la base de datos de forma sencilla
                             Using sqlBackup As New MySqlBackup(sqlCommand)
                                 sqlCommand.Connection = sConnection
+                                ' se abre la conexión
                                 sConnection.Open()
                                 sqlBackup.ExportInfo.AddCreateDatabase = True
                                 sqlBackup.ExportInfo.ExportTableStructure = True
@@ -169,6 +186,7 @@ Namespace Forms
             Try
                 Dim constring = "server=localhost;user=root;pwd=TeAmoMelisa_1;"
                 Dim restoreFile As String
+                ' Permite abrir archivos
                 Dim fileOpener As OpenFileDialog = New OpenFileDialog()
                 fileOpener.Filter = "SQL files | *.sql"
                 If fileOpener.ShowDialog() = DialogResult.OK Then
@@ -233,9 +251,13 @@ Namespace Forms
             ReporteListaCursoAlumnos.Dispose()
         End Sub
 
+        ''' <summary>
+        ''' Metodo que da acceso a las diferentes partes del aplicativo
+        ''' </summary>
         Public Sub Acceso()
             Database = New simpp_maarEntities()
             Dim perfil As perfil = Database.perfils.Find(_op)
+            ' Equals significa que el perfil detalle es igual al string comparado.
             If perfil.Detalle.Equals("Administrador") Then
                 'smpp300.Visible = False
                 'smpp400.Visible = False

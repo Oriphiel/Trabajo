@@ -15,6 +15,7 @@ Namespace Forms
             Dim nuevo = Database.usuarios.SingleOrDefault(Function(o) o.Username = username And o.Password = password And o.Estado = "A")
             ' Si el existe un usuario con el mismo nombre y el mismo password devuelve verdadero
             If (nuevo IsNot Nothing) Then
+                ' Realizamos un mensaje de bienvenida al usuario y mostramos el formulario principal
                 MessageBox.Show(String.Format("Bienvenido {0} {1}", nuevo.persona.Nombre, nuevo.persona.Apellidos), "Login correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 User = nuevo.idUsuario
                 Dim perfilito = Database.perfil_usuario.SingleOrDefault(Function(o) o.idUsuario = User And o.Estado = "A")
@@ -35,6 +36,7 @@ Namespace Forms
         End Sub
 
         Private Sub txtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress
+            ' Permite que al realizar Enter en el teclado en el textBox de la contraseña realice la acción del botón aceptar
             If e.KeyChar = Chr(13) Then
                 btnAcept.PerformClick()
             End If
